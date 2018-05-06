@@ -1,0 +1,35 @@
+﻿Unit Tests!
+	test unique sitename validation in AddNew
+
+Make sure all properties that are using SetProperty(ref prop, value)
+are actually utilizing it
+
+Find out the proper time to use viewmodel properties vs sending
+the properties in as command parameters into command delegates
+
+pull from a database instead of a json file
+
+Have windows authentication to access the site data files
+
+Add an indication when copy password is pressed
+		----This is done, but it doesn't feel MVVM friendly
+
+Make password hidden and add option to reveal it
+
+Change model name "Site" to "Account" and change the corresponding UI to reflect it
+
+automatically add "https://" to url box
+
+make it more clear that you can manually add characters to the generated password field
+and it will still save the password
+
+make a favorites list that floats to the top of the list
+
+Make a #days since last changed display
+
+Add a cancel button the the passwordsymbolsview
+
+Ongoing: 
+Find out what symbols are commonly not included in passwords
+	and make the change in the default to reflect that
+Fix the GUI so that it looks...better

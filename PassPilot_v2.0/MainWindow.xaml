@@ -1,0 +1,34 @@
+﻿<Window
+    x:Class="PassPilot_v2._0.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:PassPilot_v2._0"
+    xmlns:vm="clr-namespace:PassPilot_v2._0.ViewModels"
+    xmlns:view="clr-namespace:PassPilot_v2._0.Views"
+    Title="PassPilot 2.0" 
+    Height="350" 
+    Width="420">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:SiteListViewModel}">
+            <view:SiteListView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PasswordHistoryViewModel}">
+            <view:PasswordHistoryView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PasswordChangeViewModel}">
+            <view:PasswordChangeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PasswordSymbolsViewModel}">
+            <view:PasswordSymbolsView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SiteAddEditViewModel}">
+            <view:SiteAddEditView />
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <ContentControl Content="{Binding CurrentViewModel}" />
+    </Grid>
+</Window>

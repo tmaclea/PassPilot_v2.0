@@ -1,0 +1,110 @@
+﻿<UserControl x:Class="PassPilot_v2._0.Views.SiteListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PassPilot_v2._0.Views"
+             xmlns:vm="clr-namespace:PassPilot_v2._0.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="280" d:DesignWidth="365">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="0,5,5,5" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ListBox x:Name="SiteListbox" 
+            Grid.Column="0"
+            Grid.RowSpan="11"    
+            ItemsSource="{Binding Sites}"
+            SelectedItem="{Binding SelectedSite}"
+            Margin="10,5,10,5"/>
+        <Button x:Name="btnAddNew" 
+            Content="Add New Site"
+            Command="{Binding AddCommand}"
+            Grid.Column="1" />
+        <Button x:Name="btnEditSite" 
+            Content="Edit"
+            Command="{Binding EditCommand}"
+            CommandParameter="{Binding SelectedSite}"
+            Grid.Column="1"
+            Grid.Row="2"/>
+        <Button x:Name="btnGoToSite" 
+            Content="Go to site" 
+            Command="{Binding GoToSiteCommand}"
+            CommandParameter="{Binding SelectedSite}"
+            Grid.Column="1"
+            Grid.Row="3"/>
+        <Label x:Name="lblLastChangedTxt" 
+            Content="Password Last Changed:" 
+            Grid.Column="1"
+            Grid.Row="4"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center" />
+        <Label x:Name="lblLastChangedDate" 
+            Content="{Binding Path=SelectedSite.LastChanged}" 
+            ContentStringFormat="{}{0:MM/dd/yyyy}"
+            Grid.Column="1"
+            Grid.Row="5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center" />
+        <TextBox x:Name="txtBoxUsername" 
+            Text="{Binding SelectedSite.Username}"
+            TextWrapping="NoWrap" 
+            IsReadOnly="True"
+            Grid.Column="1"
+            Grid.Row="6"
+            Margin="0,5,5,5" />
+        <TextBox x:Name="txtBoxPassword" 
+            Text="{Binding SelectedSite.Password}" 
+            TextWrapping="NoWrap" 
+            IsReadOnly="True"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Grid.Column="1"
+            Grid.Row="7"
+            Width="140"/>
+        <Button x:Name="btnHistory" 
+            Content="History"
+            Command="{Binding HistoryCommand}"
+            CommandParameter="{Binding SelectedSite}"
+            HorizontalAlignment="Right" 
+            Grid.Column="1"
+            Grid.Row="7"/>
+        <Button x:Name="btnCopyPassword"
+            Command="{Binding CopyCommand}"
+            Content="{Binding CopyText}" 
+            Grid.Column="1"
+            Grid.Row="8" />
+        <Button x:Name="btnChangePassword" 
+            Content="Generate New Password" 
+            Command="{Binding GenerateCommand}"
+            CommandParameter="{Binding SelectedSite}" 
+            Grid.Column="1"
+            Grid.Row="9"/>
+        <Button x:Name="btnDeleteSite" 
+            Content="Delete Site" 
+            Command="{Binding DeleteCommand}"
+            CommandParameter="{Binding SelectedSite}"
+            Grid.Column="1"
+            Grid.Row="10"/>
+
+    </Grid>
+</UserControl>
